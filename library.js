@@ -25,134 +25,8 @@ function search(searched) {
               </h5>
             </div>
           </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
+          </div>
     </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
-    </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
-    </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
-    </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
-    </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
-    </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
-    </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
-    </div>
-    <div class="col">
-      <div class="card" style="height: 200px;">
-    <p class="card-text placeholder-glow" style="padding-left: 4px; padding-right: 4px; padding-top: 3px;">
-      <span class="placeholder col-12" style="height: 100px;"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder"></span>
-    </h5>
-  </div>
-    </div>
-  </div>
-</div>
 `;
   const search=searched;
   fetch(`https://openlibrary.org/search.json?q=${searched}`, { signal })
@@ -165,6 +39,14 @@ function search(searched) {
         data.docs.forEach((book, index) => {
           if (book.cover_i) {
             const modalId = `modal-${index}`; // unique modal ID
+            
+            // Create a clean book object to pass to our new function
+            const bookToSave = {
+              title: book.title,
+              author: book.author_name ? book.author_name.join(', ') : 'Unknown Author',
+              year: book.first_publish_year || 'N/A',
+              cover: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+            };
 
             const col = document.createElement("div");
             col.className = "col-6 col-md-4 col-lg-2 mb-3";
@@ -181,7 +63,6 @@ function search(searched) {
                 </div>
               </div>
 
-              <!-- Modal for this book -->
               <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}Label" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -202,7 +83,7 @@ function search(searched) {
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save Notes</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-success w-100" type="submit" id="addBookUser" onclick="renderUserLikedBooks()">
+                            <button class="btn btn-success w-100" type="button" onclick='saveBookForLater(${JSON.stringify(bookToSave)})'>
                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
                                 <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
@@ -214,7 +95,6 @@ function search(searched) {
                 </div>
               </div>
             `;
-
             container.appendChild(col);
           }
         });
@@ -222,4 +102,26 @@ function search(searched) {
     })
     .catch(error => console.error("Error fetching books", error));
 }
-//Saving books **********************
+
+//Saving books
+function saveBookForLater(bookData) {
+  // Get existing saved books from localStorage, or start a new empty array
+  let userSaves = JSON.parse(localStorage.getItem("userSaves")) || [];
+
+  // Check if the book is already saved to prevent duplicates
+  const isDuplicate = userSaves.some(
+    (savedBook) => savedBook.title === bookData.title && savedBook.author === bookData.author
+  );
+
+  if (isDuplicate) {
+    alert("This book is already in your 'Saves' list!");
+    return; // Exit the function if it's a duplicate
+  }
+
+  // Add the new book to the array
+  userSaves.push(bookData);
+
+  // Save the updated array back to localStorage
+  localStorage.setItem("userSaves", JSON.stringify(userSaves));
+  alert(`"${bookData.title}" has been added to your saves!`);
+}
