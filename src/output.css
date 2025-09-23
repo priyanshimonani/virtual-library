@@ -251,6 +251,7 @@ body {
   margin-right: auto;
   color: #F4E3B2;
   font-size: xx-large;
+  font-family: 'IM FELL DW Pica SC';
 }
 .div1 {
   grid-area: 1 / 1 / 4 / 3;
@@ -271,6 +272,8 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
+  padding-top: 50px;
+  padding-left: 6px;
 }
 .div1:hover, .div2:hover, .div3:hover, .div4:hover {
   transform: scale(1.02);
@@ -290,6 +293,11 @@ body {
 .div1:hover::after, .div2:hover::after, .div3:hover::after, .div4:hover::after {
   opacity: 1;
 }
-.form-control {
-  background-color: #75070C;
+.customcard {
+  box-shadow: 0 0 2 10 rgba(0,0,0,0.6);
+}
+.custBook {
+  background-color: #75070C !important;
+  color: #F4E3B2 !important;
+  font-size: large;
 }

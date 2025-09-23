@@ -4,6 +4,7 @@
 }
 body{
     background-color: #F4E3B2 !important;
+    font-family: 'IM FELL DW Pica SC';
 }
 
 .parent {
@@ -18,6 +19,7 @@ body{
   margin-right: auto;
   color: #F4E3B2;
   font-size: xx-large;
+  font-family: 'IM FELL DW Pica SC';
 }
 
 
@@ -32,6 +34,8 @@ body{
   position: relative;
   overflow: hidden;
   border-radius: 15px;
+  padding-top: 50px;
+  padding-left: 6px;
 }
 .div1:hover,
 .div2:hover,
@@ -61,6 +65,26 @@ body{
 .div4:hover::after {
   opacity: 1;  /* show gradient on hover */
 }
-.form-control{
-    background-color: #75070C;
+.customcard{
+  box-shadow:0 0 2 10 rgba(0,0,0,0.6);
+}
+.custBook{
+  background-color: #75070C !important;
+  color: #F4E3B2 !important;
+  font-size: large;
+}
+ .search-input::placeholder {
+    color:#d99598 !important;
+    opacity: 1;
+  }
+  button:hover{
+    box-shadow:0 0 2 10 rgba(0,0,0,0.6) !important;
+  }
+.card-body1 {
+  border-radius: 12px; /* rounded edges */
+  background-color: #F4E3B2; /* base card color */
+  box-shadow: inset 0 4px 6px rgba(255, 255, 255, 0.6); /* whitish inner shadow */
+  padding: 1rem; /* spacing inside card */
+  color: #75070C; /* text color for contrast */
+  margin-top: 5px;
 }
