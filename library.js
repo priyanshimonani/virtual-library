@@ -76,14 +76,11 @@ function search(searched) {
                         <h4>Author: ${book.author_name}</h4>
                         <h5>Year: ${book.first_publish_year}</h5>
                         <div class="mb-3">
-                        <label for="message-text-${index}" class="col-form-label">Add notes:</label>
-                        <textarea class="form-control" id="message-text-${index}"></textarea>
+                        
                         </div>
                         </form>
                         <div class="modal-footer">
-                            <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #75070C !important;color: #F4E3B2 !important;">Save Notes</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #75070C !important;color: #F4E3B2 !important;">Close</button>
-                            <button type="button" class="btn btn-warning" onclick="clearNotes(${index})" style="background-color: #75070C !important;color: #F4E3B2 !important;">Clear Notes</button>
+                            
                             <button class="btn w-100 custBook" type="button" onclick='saveBookForLater(${JSON.stringify(bookToSave)})'>
                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>

@@ -1,10 +1,11 @@
 @import "tailwindcss";
 .custnavbar{
     background-color: #75070C;
+    color: #F4E3B2 !important;
 }
 body{
     background-color: #F4E3B2 !important;
-    font-family: 'IM FELL DW Pica SC';
+    font-family: 'IM FELL DW Pica SC' !important;
 }
 
 .parent {
@@ -66,7 +67,12 @@ body{
   opacity: 1;  /* show gradient on hover */
 }
 .customcard{
-  box-shadow:0 0 2 10 rgba(0,0,0,0.6);
+  box-shadow:0 0 2 1 rgba(83, 42, 42, 0.6);
+}
+.customcard:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* subtle shadow */
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  transform: translateY(-2px); /* slight lift effect */
 }
 .custBook{
   background-color: #75070C !important;
@@ -77,9 +83,11 @@ body{
     color:#d99598 !important;
     opacity: 1;
   }
-  button:hover{
-    box-shadow:0 0 2 10 rgba(0,0,0,0.6) !important;
-  }
+  button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* subtle shadow */
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  transform: translateY(-2px); /* slight lift effect */
+}
 .card-body1 {
   border-radius: 12px; /* rounded edges */
   background-color: #F4E3B2; /* base card color */
@@ -87,4 +95,52 @@ body{
   padding: 1rem; /* spacing inside card */
   color: #75070C; /* text color for contrast */
   margin-top: 5px;
+}
+.streak-container {
+  background: #fdfaf4;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 400px;
+  margin: auto;
+}
+
+.streak-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #75070C;
+  margin-bottom: 15px;
+}
+
+.streak-days {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.day {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #666;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.day.active {
+  background: #75070C;
+  color: #F4E3B2;
+  transform: scale(1.1);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.streak-count {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
 }

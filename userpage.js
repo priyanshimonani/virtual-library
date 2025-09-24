@@ -11,16 +11,16 @@ function renderUserBooks() {
     const col = document.createElement("div");
     col.className = "col-6 col-md-4 col-lg-2 mb-3";
     col.innerHTML = `
-    <div class="card h-100 customcard" style="box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.6);">
+    <div class="card h-100 customcard">
   <img src="${book.cover}" 
-       class="card-img-top"  alt="No image uploaded"
+       class="card-img-top h-100"  alt="No image uploaded"
        style="height:160px; object-fit:cover;" 
        type="button" data-bs-toggle="modal" data-bs-target="#${modalId}" />
   <div class="card-body">
     <h5 class="card-title">${book.title}</h5>
     <p class="card-text">${book.author} (${book.year || 'N/A'})</p>
-    <button class="btn btn-warning btn-sm" onclick="editBook(${index})">Edit</button>
-    <button class="btn btn-danger btn-sm" onclick="deleteBook(${index})">Delete</button>
+    <button class="btn btn-warning btn-sm" onclick="editBook(${index})" style="background-color: #75070C !important;color: #F4E3B2 !important;">Edit</button>
+    <button class="btn btn-danger btn-sm" onclick="deleteBook(${index})" style="background-color: #75070C !important;color: #F4E3B2 !important;">Delete</button>
   </div>
 </div>
 
@@ -85,19 +85,9 @@ document.getElementById("addBookForm").addEventListener("submit", function (e) {
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const year = document.getElementById("year").value;
-  const fileInput = document.getElementById("coverFile");
-  const file = fileInput.files[0];
+  const cover = document.getElementById("coverUrl").value || ""; // ✅ take image URL directly
 
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const cover = event.target.result; 
-      saveBook({ title, author, year, cover });
-    };
-    reader.readAsDataURL(file);
-  } else {
-    saveBook({ title, author, year, cover: "" });
-  }
+  saveBook({ title, author, year, cover });
 
   this.reset();
 });
@@ -115,7 +105,7 @@ function editBook(index) {
   document.getElementById("title").value = book.title;
   document.getElementById("author").value = book.author;
   document.getElementById("year").value = book.year;
-  alert("You can update the cover by selecting a new file when saving again.");
+  document.getElementById("coverUrl").value = book.cover; // ✅ load existing cover URL into input
   userBooks.splice(index, 1);
   renderUserBooks();
 }
@@ -136,7 +126,7 @@ function renderUserSaves() {
         const col = document.createElement("div");
         col.className = "col-6 col-md-4 col-lg-2 mb-3";
         col.innerHTML = `
-        <div class="card customcard h-100" style="box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.6);">
+        <div class="card customcard h-100" >
   <img src="${book.cover}" 
        class="card-img-top h-100"
        type="button" 
@@ -145,7 +135,7 @@ function renderUserSaves() {
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${book.title}</h5>
                 <p class="card-text">${book.author} (${book.year || 'N/A'})</p>
-                <button class="btn btn-danger btn-sm mt-auto" onclick="deleteSavedBook(${index})">Delete</button>
+                <button class="btn btn-danger btn-sm mt-auto" onclick="deleteSavedBook(${index})" style="background-color: #75070C !important;color: #F4E3B2 !important;">Delete</button>
             </div>
         </div>
 
